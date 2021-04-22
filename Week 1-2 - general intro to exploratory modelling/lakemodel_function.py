@@ -5,6 +5,7 @@ Created on May 2, 2017
 '''
 import math
 import numpy as np
+from ema_workbench import Model, RealParameter, ScalarOutcome, perform_experiments
 
 from scipy.optimize import brentq
 
@@ -56,5 +57,5 @@ def lake_problem(b=0.42, q=2.0, mean=0.02, stdev=0.0017, delta=0.98,
     max_P = np.max(average_daily_P)
     utility = np.sum(alpha*decisions*np.power(delta,np.arange(nvars)))
     inertia = np.sum(np.abs(np.diff(decisions)) > 0.02)/float(nvars-1)
-
+    
     return max_P, utility, inertia, reliability
